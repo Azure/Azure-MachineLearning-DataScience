@@ -22,16 +22,15 @@ BEGIN
     @script = N'
 import pickle
 import numpy
-import pandas
 from sklearn import metrics
-from revoscalepy.functions.RxPredict import rx_predict_ex
+from revoscalepy.functions.RxPredict import rx_predict
 
 mod = pickle.loads(lmodel2)
 X = InputDataSet[["passenger_count", "trip_distance", "trip_time_in_secs", "direct_distance"]]
 y = numpy.ravel(InputDataSet[["tipped"]])
 
-prob_array = rx_predict_ex(mod, X)
-prob_list = list(prob_rrray._results["tipped_Pred"])
+prob_array = rx_predict(mod, X)
+prob_list = prob_array["tipped_Pred"].values
 
 prob_array = numpy.asarray(prob_list)
 fpr, tpr, thresholds = metrics.roc_curve(y, prob_array)
