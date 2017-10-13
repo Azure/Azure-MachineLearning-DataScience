@@ -20,7 +20,6 @@ BEGIN
     @script = N'
 import numpy
 import pickle
-import pandas
 from sklearn.linear_model import LogisticRegression
 
 ## Create model
