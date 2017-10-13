@@ -33,7 +33,6 @@ BEGIN
 		@script = N'
 import pickle
 import numpy
-import pandas
 
 # Load model and unserialize
 mod = pickle.loads(model)
