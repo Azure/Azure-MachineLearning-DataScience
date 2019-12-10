@@ -23,7 +23,6 @@ BEGIN
     @script = N'
 import pickle
 import numpy
-import pandas
 from sklearn import metrics
 
 mod = pickle.loads(lmodel2)
