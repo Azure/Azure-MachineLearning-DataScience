@@ -33,8 +33,7 @@ BEGIN
 		@script = N'
 import pickle
 import numpy
-import pandas
-from revoscalepy.functions.RxPredict import rx_predict_ex
+from revoscalepy.functions.RxPredict import rx_predict
 
 # Load model and unserialize
 mod = pickle.loads(model)
@@ -44,9 +43,9 @@ x = InputDataSet[["passenger_count", "trip_distance", "trip_time_in_secs", "dire
 
 # Score data to get tip prediction probability as a list (of float)
 
-prob_array = rx_predict_ex(mod, x)
+prob_array = rx_predict(mod, x)
 
-prob_list = [prob_array._results["tipped_Pred"]]
+prob_list = prob_array["tipped_Pred"].values
 
 # Create output data frame
 OutputDataSet = pandas.DataFrame(data=prob_list, columns=["predictions"])
